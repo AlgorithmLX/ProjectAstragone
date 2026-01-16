@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <maxFileSize>5MB</maxFileSize>
+    </triggeringPolicy>
+    <!-- yyyy -> year; MM -> month; dd -> day; HH -> hours; mm -> minutes; ss -> seconds SSS - ms -->
+    <timestamp key="bySecond" datePattern="yyyy'-'MM'-'dd'-'HH'-'mm'-'ss" timeReference="contextBirth"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss}] [%boldCyan(%thread)/%highlight(%level) | %boldGreen(%logger{0})] [%red(%X{jda.shard})] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE-FULL" class="ch.qos.logback.core.FileAppender">
+        <file>logs/debug-${bySecond}.log</file>
+        <encoder>
+            <pattern>[%d{HH:mm:ss}] [%thread/%level | %logger{0}] [%X{jda.shard}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE-FULL" />
+    </root>
+</configuration>

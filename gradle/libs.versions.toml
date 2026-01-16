@@ -1,0 +1,33 @@
+[versions]
+kotlin-core = "2.2.10"
+kotlin-serialization = "1.8.1"
+kotlin-coroutines = "1.10.2"
+kotlin-datetime = "0.4.1"
+jetbrains-exposed = "0.60.0"
+postgresql = "42.7.3"
+ktor = "3.3.3"
+telegram-bot = "6.0.0"
+logback-classic = "1.5.13"
+redis = "7.2.1.RELEASE"
+
+[libraries]
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlin-serialization" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+telegram-bot = { module = "io.github.kotlin-telegram-bot.kotlin-telegram-bot:telegram", version.ref = "telegram-bot" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+redis = { module = "io.lettuce:lettuce-core", version.ref = "redis" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "jetbrains-exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "jetbrains-exposed" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-core" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-core" }
