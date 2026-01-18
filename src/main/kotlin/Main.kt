@@ -286,12 +286,12 @@ fun main() {
                 val user = message.from ?: return@message
                 if (chat.type != "private") return@message
                 if (user.isBot) return@message
+                if (UserProfile.isExists(database, user.id.toString())) return@message
 
                 useRedis(redisClient) { commands ->
                     val cache = UserRegister(commands)
                     val data = cache.get(chatId.toString()) { UserRegister.Data("", null) }
                     if (data.userId.isEmpty()) return@useRedis
-                    if (!data.userName.isNullOrEmpty()) return@useRedis
 
                     val text = message.text
                     if (text == null) {
