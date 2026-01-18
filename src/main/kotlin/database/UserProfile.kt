@@ -37,6 +37,7 @@ object UserProfileDatabase: Table() {
             it[this.telegramId] = userId
             it[this.userName] = userName
         } else UserProfileDatabase.insert {
+            it[this.telegramId] = userId
             it[this.userName] = userName
         }
     }

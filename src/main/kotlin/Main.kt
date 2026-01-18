@@ -196,9 +196,7 @@ fun main() {
                 val userName = useRedis(redisClient) { commands ->
                     val cache = UserRegister(commands)
                     val data = cache.get(chatId.toString()) { UserRegister.Data("", null) }
-                    val userId = data.userId
                     val userName = data.userName
-                    userName?.let { UserProfileDatabase.save(database, userId, it) }
                     cache.invalidate(chatId.toString())
                     return@useRedis userName
                 }
@@ -235,6 +233,8 @@ fun main() {
 
                     return@callbackQuery
                 }
+
+                UserProfileDatabase.save(database, user.id.toString(), userName)
 
                 bot.sendMessage(
                     chatId,
