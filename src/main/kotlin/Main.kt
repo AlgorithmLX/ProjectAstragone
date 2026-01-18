@@ -315,7 +315,7 @@ fun main() {
                             )
                         )
 
-                    return@useRedis
+                        return@useRedis
                     }
 
                     if (text.startsWith("/")) return@useRedis
