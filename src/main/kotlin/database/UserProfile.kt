@@ -13,18 +13,17 @@ data class UserProfile(
     val telegramId: String,
     val userName: String
 ) {
-    companion object: EasyGetter<UserProfile> {
+    companion object {
         @JvmStatic
-        override fun fromDatabase(db: Database): List<UserProfile> = transaction(db) {
-            UserProfileDatabase.selectAll().map {
-                val tgId = it[UserProfileDatabase.telegramId]
-                val usName = it[UserProfileDatabase.userName]
-                UserProfile(tgId, usName)
-            }
+        fun getById(db: Database, userId: String) = transaction(db) {
+            UserProfileDatabase.select(UserProfileDatabase.telegramId)
+                .where { UserProfileDatabase.telegramId eq userId }
+                .map { UserProfile(it[UserProfileDatabase.telegramId], it[UserProfileDatabase.userName]) }
+                .singleOrNull()
         }
 
         @JvmStatic
-        fun getById(db: Database, userId: String) = this.fromDatabase(db).firstOrNull { it.telegramId == userId }
+        fun isExists(db: Database, userId: String): Boolean = this.getById(db, userId) != null
     }
 }
 
@@ -34,13 +33,10 @@ object UserProfileDatabase: Table() {
 
     @JvmStatic
     fun save(db: Database, userId: String, userName: String) = transaction(db) {
-        val exists = UserProfile.getById(db, userId) != null
-
-        if (exists) UserProfileDatabase.update({ telegramId eq userId }) {
+        if (UserProfile.isExists(db, userId)) UserProfileDatabase.update({ telegramId eq userId }) {
             it[this.telegramId] = userId
             it[this.userName] = userName
         } else UserProfileDatabase.insert {
-            it[this.telegramId] = userId
             it[this.userName] = userName
         }
     }
