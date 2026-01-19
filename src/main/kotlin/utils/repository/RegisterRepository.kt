@@ -1,9 +1,9 @@
-package com.algorithmlx.astragone.utils
+package com.algorithmlx.astragone.utils.repository
 
 import com.algorithmlx.astragone.RedisFactory
 import com.algorithmlx.astragone.redis.cache.UserRegister
 
-class RegisterCacheUtil(private val redis: RedisFactory) {
+class RegisterRepository(private val redis: RedisFactory) {
     fun saveState(chatId: String, userId: String, name: String?) {
         redis.use { commands ->
             val cache = UserRegister(commands)

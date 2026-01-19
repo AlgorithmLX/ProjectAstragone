@@ -10,6 +10,7 @@ telegram-bot = "6.3.0"
 logback-classic = "1.5.13"
 redis = "7.2.1.RELEASE"
 retrofit = "2.9.0"
+koin = "4.1.1"
 
 [libraries]
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -30,6 +31,7 @@ exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "j
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 [bundles]
 kotlinx = [ "kotlin-coroutines", "kotlin-serialization-core", "kotlin-serialization-json", "kotlin-datetime" ]

@@ -1,4 +1,4 @@
-package com.algorithmlx.astragone.utils
+package com.algorithmlx.astragone.utils.repository
 
 import com.algorithmlx.astragone.database.PrivilegedUsersDatabase
 import com.algorithmlx.astragone.database.UserProfile
@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class UserRepositoryUtil(private val db: Database) {
+class UserRepository(private val db: Database) {
     fun exists(userId: String): Boolean = UserProfile.Companion.isExists(db, userId)
 
     fun get(userId: String): UserProfile? = UserProfile.Companion.getById(db, userId)

@@ -1,5 +1,37 @@
 package com.algorithmlx.astragone
 
+import com.algorithmlx.astragone.handlers.AdminHandler
+import com.algorithmlx.astragone.handlers.RegisterHandler
+import com.algorithmlx.astragone.handlers.StartHandler
+import com.algorithmlx.astragone.utils.service.AdminInitService
+import com.algorithmlx.astragone.utils.repository.RegisterRepository
+import com.algorithmlx.astragone.utils.repository.UserRepository
+import org.koin.dsl.module
+
+val appModule = module {
+    // Config
+    single { BotConfig }
+
+    // Factories
+    single { DatabaseFactory(get()) }
+    single { RedisFactory(get()) }
+
+    // Database
+    single { get<DatabaseFactory>().database }
+
+    // Repositories
+    single { UserRepository(get()) }
+    single { RegisterRepository(get()) }
+
+    // Services
+    single { AdminInitService(get()) }
+
+    // Handlers
+    single { AdminHandler(get(), get()) }
+    single { StartHandler(get(), get()) }
+    single { RegisterHandler(get(), get()) }
+}
+
 object BotConfig {
     init {
         System.setProperty("jsse.enableSNIExtension", "false")

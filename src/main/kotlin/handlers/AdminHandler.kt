@@ -1,14 +1,14 @@
 package com.algorithmlx.astragone.handlers
 
-import com.algorithmlx.astragone.utils.AdminInitServiceUtil
-import com.algorithmlx.astragone.utils.UserRepositoryUtil
+import com.algorithmlx.astragone.utils.service.AdminInitService
+import com.algorithmlx.astragone.utils.repository.UserRepository
 import com.github.kotlintelegrambot.Bot
 import com.github.kotlintelegrambot.entities.ChatId
 import com.github.kotlintelegrambot.entities.Message
 
 class AdminHandler(
-    private val adminService: AdminInitServiceUtil,
-    private val userRepository: UserRepositoryUtil
+    private val adminService: AdminInitService,
+    private val userRepository: UserRepository
 ) {
     fun handle(bot: Bot, message: Message) {
         val user = message.from ?: return

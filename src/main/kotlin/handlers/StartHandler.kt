@@ -1,15 +1,15 @@
 package com.algorithmlx.astragone.handlers
 
-import com.algorithmlx.astragone.utils.RegisterCacheUtil
-import com.algorithmlx.astragone.utils.UserRepositoryUtil
+import com.algorithmlx.astragone.utils.repository.RegisterRepository
+import com.algorithmlx.astragone.utils.repository.UserRepository
 import com.github.kotlintelegrambot.Bot
 import com.github.kotlintelegrambot.entities.ChatId
 import com.github.kotlintelegrambot.entities.Message
 import com.github.kotlintelegrambot.entities.User
 
 class StartHandler(
-    private val userRepository: UserRepositoryUtil,
-    private val registerCache: RegisterCacheUtil
+    private val userRepository: UserRepository,
+    private val registerCache: RegisterRepository
 ): RegisterKeyboardHandler() {
     fun handle(bot: Bot, message: Message) {
         val user = message.from ?: return

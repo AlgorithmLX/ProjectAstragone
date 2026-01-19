@@ -1,15 +1,16 @@
-package com.algorithmlx.astragone.utils
+package com.algorithmlx.astragone.utils.service
 
+import com.algorithmlx.astragone.utils.repository.UserRepository
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
-class AdminInitServiceUtil(private val userRepository: UserRepositoryUtil) {
+class AdminInitService(private val userRepository: UserRepository) {
     private var accessKey = ""
 
     @OptIn(ExperimentalUuidApi::class)
     fun tryInit() {
         if (userRepository.isNoPrivileged()) {
-            accessKey = Uuid.random().toHexString()
+            accessKey = Uuid.Companion.random().toHexString()
             println("Hello everyone?")
             println("Somebody, who are my owner?")
             println("Please, found!")

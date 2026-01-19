@@ -1,7 +1,7 @@
 package com.algorithmlx.astragone.handlers
 
-import com.algorithmlx.astragone.utils.RegisterCacheUtil
-import com.algorithmlx.astragone.utils.UserRepositoryUtil
+import com.algorithmlx.astragone.utils.repository.RegisterRepository
+import com.algorithmlx.astragone.utils.repository.UserRepository
 import com.github.kotlintelegrambot.Bot
 import com.github.kotlintelegrambot.entities.CallbackQuery
 import com.github.kotlintelegrambot.entities.ChatId
@@ -9,9 +9,9 @@ import com.github.kotlintelegrambot.entities.InlineKeyboardMarkup
 import com.github.kotlintelegrambot.entities.Message
 import com.github.kotlintelegrambot.entities.keyboard.InlineKeyboardButton
 
-class RegisterFlowHandler(
-    private val userRepo: UserRepositoryUtil,
-    private val registerCache: RegisterCacheUtil
+class RegisterHandler(
+    private val userRepo: UserRepository,
+    private val registerCache: RegisterRepository
 ): RegisterKeyboardHandler() {
     fun handle(bot: Bot, message: Message) {
         val user = message.from ?: return

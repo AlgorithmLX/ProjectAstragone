@@ -21,6 +21,7 @@ dependencies {
     implementation(rootProject.libs.logback.classic)
     implementation(rootProject.libs.redis)
     implementation(rootProject.libs.postgresql)
+    implementation(rootProject.libs.koin.core)
 }
 
 kotlin {
