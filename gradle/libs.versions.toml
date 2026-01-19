@@ -6,9 +6,10 @@ kotlin-datetime = "0.4.1"
 jetbrains-exposed = "0.60.0"
 postgresql = "42.7.3"
 ktor = "3.3.3"
-telegram-bot = "6.0.0"
+telegram-bot = "6.3.0"
 logback-classic = "1.5.13"
 redis = "7.2.1.RELEASE"
+retrofit = "2.9.0"
 
 [libraries]
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -27,6 +28,14 @@ redis = { module = "io.lettuce:lettuce-core", version.ref = "redis" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "jetbrains-exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "jetbrains-exposed" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
+[bundles]
+kotlinx = [ "kotlin-coroutines", "kotlin-serialization-core", "kotlin-serialization-json", "kotlin-datetime" ]
+ktor = [ "ktor-client-core", "ktor-client-cio", "ktor-client-okhttp", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json" ]
+exposed = [ "exposed-core", "exposed-jdbc" ]
+retrofit = [ "retrofit-core", "retrofit-converter-gson" ]
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-core" }

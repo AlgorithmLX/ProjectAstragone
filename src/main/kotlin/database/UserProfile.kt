@@ -16,7 +16,7 @@ data class UserProfile(
     companion object {
         @JvmStatic
         fun getById(db: Database, userId: String) = transaction(db) {
-            UserProfileDatabase.select(UserProfileDatabase.telegramId)
+            UserProfileDatabase.selectAll()
                 .where { UserProfileDatabase.telegramId eq userId }
                 .map { UserProfile(it[UserProfileDatabase.telegramId], it[UserProfileDatabase.userName]) }
                 .singleOrNull()

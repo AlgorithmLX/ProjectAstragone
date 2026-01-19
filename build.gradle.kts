@@ -13,22 +13,13 @@ repositories {
 }
 
 dependencies {
-    implementation(rootProject.libs.kotlin.coroutines)
-
-    implementation(rootProject.libs.kotlin.serialization.json)
-    implementation(rootProject.libs.kotlin.serialization.core)
-    implementation(rootProject.libs.kotlin.datetime)
-    implementation(rootProject.libs.ktor.client.core)
-    implementation(rootProject.libs.ktor.client.cio)
-    implementation(rootProject.libs.ktor.client.okhttp)
-    implementation(rootProject.libs.ktor.client.logging)
-    implementation(rootProject.libs.ktor.client.content.negotiation)
-    implementation(rootProject.libs.ktor.serialization.kotlinx.json)
+    implementation(rootProject.libs.bundles.kotlinx)
+    implementation(rootProject.libs.bundles.ktor)
+    implementation(rootProject.libs.bundles.exposed)
+    implementation(rootProject.libs.bundles.retrofit)
     implementation(rootProject.libs.telegram.bot)
     implementation(rootProject.libs.logback.classic)
     implementation(rootProject.libs.redis)
-    implementation(rootProject.libs.exposed.core)
-    implementation(rootProject.libs.exposed.jdbc)
     implementation(rootProject.libs.postgresql)
 }
 
