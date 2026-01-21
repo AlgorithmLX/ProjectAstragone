@@ -1,5 +1,6 @@
 package com.algorithmlx.astragone
 
+import com.algorithmlx.astragone.client.RemnaClient
 import com.algorithmlx.astragone.handlers.AdminHandler
 import com.algorithmlx.astragone.handlers.RegisterHandler
 import com.algorithmlx.astragone.handlers.StartHandler
